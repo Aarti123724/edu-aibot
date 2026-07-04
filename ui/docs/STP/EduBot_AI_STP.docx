@@ -1,0 +1,179 @@
+📗 Software Test Plan (STP)
+Table of Contents
+1. Introduction
+2. Test Objectives
+3. Test Scope
+4. Test Environment
+5. Test Strategy
+6. Test Cases
+7. Test Results
+8. Bug Reporting
+9. Conclusion
+
+1. Introduction
+
+1.1 Purpose
+
+The purpose of this Software Test Plan (STP) is to define the testing approach, objectives, test environment, and test cases for the EduBot AI application.
+The document ensures that every feature of the system is tested to verify correct functionality, performance, reliability, and usability.
+
+1.2 Scope
+This testing covers all major modules of EduBot AI, including:
+
+.PDF Upload
+.OCR Processing
+.RAG Retrieval
+.Gemini AI Response
+.Chat History
+.Language Selection
+.PDF Summary
+.Source References
+.User Interface
+
+2. Test Objectives
+
+The main objectives are:
+.Verify all features work correctly.
+.Ensure accurate AI-generated responses.
+.Validate document retrieval.
+.Test user interface functionality.
+.Identify bugs before deployment.
+.Ensure application stability.
+
+3. Test Environment
+| Component        | Details                 |
+| ---------------- | ----------------------- |
+| Operating System | Windows 11 / macOS      |
+| Language         | Python 3.11+            |
+| Frontend         | Streamlit               |
+| AI Model         | Google Gemini 2.5 Flash |
+| Vector Database  | FAISS                   |
+| Browser          | Google Chrome           |
+| IDE              | VS Code                 |
+
+4. Test Strategy
+
+The following testing methods were used:
+.Functional Testing
+.User Interface Testing
+.Integration Testing
+.Performance Testing
+.Regression Testing
+.Manual Testing
+
+5. Test Cases
+
+Test Case 1 – Upload PDF
+| Field           | Value                           |
+| --------------- | ------------------------------- |
+| Test ID         | TC-01                           |
+| Module          | PDF Upload                      |
+| Objective       | Verify PDF upload functionality |
+| Input           | Valid PDF                       |
+| Expected Result | PDF uploaded successfully       |
+| Actual Result   | PDF uploaded successfully       |
+| Status          | Pass                            |
+
+Test Case 2 – OCR
+| Field           | Value                         |
+| --------------- | ----------------------------- |
+| Test ID         | TC-02                         |
+| Module          | OCR                           |
+| Objective       | Extract text from scanned PDF |
+| Input           | Scanned PDF                   |
+| Expected Result | Text extracted correctly      |
+| Actual Result   | Text extracted successfully   |
+| Status          | Pass                          |
+
+Test Case 3 – AI Question Answering
+
+| Field           | Value                                   |
+| --------------- | --------------------------------------- |
+| Test ID         | TC-03                                   |
+| Module          | AI Response                             |
+| Objective       | Answer questions from uploaded document |
+| Input           | Educational Question                    |
+| Expected Result | Accurate answer generated               |
+| Actual Result   | Answer generated successfully           |
+| Status          | Pass                                    |
+
+Test Case 4 – Follow-up Questions
+| Field           | Value                              |
+| --------------- | ---------------------------------- |
+| Test ID         | TC-04                              |
+| Module          | Chat Memory                        |
+| Objective       | Verify follow-up question handling |
+| Input           | "Explain more"                     |
+| Expected Result | Previous context used              |
+| Actual Result   | Correct context retrieved          |
+| Status          | Pass                               |
+
+Test Case 5 – Language Selection
+| Field           | Value                            |
+| --------------- | -------------------------------- |
+| Test ID         | TC-05                            |
+| Module          | Language                         |
+| Objective       | Verify manual language selection |
+| Input           | Hindi                            |
+| Expected Result | Response generated in Hindi      |
+| Actual Result   | Hindi response displayed         |
+| Status          | Pass                             |
+
+Test Case 6 – PDF Summary
+| Field           | Value                     |
+| --------------- | ------------------------- |
+| Test ID         | TC-06                     |
+| Module          | Summary                   |
+| Objective       | Generate document summary |
+| Input           | Uploaded PDF              |
+| Expected Result | Summary displayed         |
+| Actual Result   | Summary generated         |
+| Status          | Pass                      |
+
+Test Case 7 – Chat History
+| Field           | Value                       |
+| --------------- | --------------------------- |
+| Test ID         | TC-07                       |
+| Module          | Chat History                |
+| Objective       | Save and load chat sessions |
+| Input           | New Chat                    |
+| Expected Result | Chat stored and reopened    |
+| Actual Result   | Working correctly           |
+| Status          | Pass                        |
+
+Test Case 8 – Source References
+| Field           | Value                            |
+| --------------- | -------------------------------- |
+| Test ID         | TC-08                            |
+| Module          | Source Reference                 |
+| Objective       | Display source document and page |
+| Input           | User Question                    |
+| Expected Result | Correct source displayed         |
+| Actual Result   | Source displayed successfully    |
+| Status          | Pass                             |
+
+
+6. Test Results Summary
+
+| Test Module        | Status |
+| ------------------ | ------ |
+| PDF Upload         | Pass   |
+| OCR                | Pass   |
+| RAG Retrieval      | Pass   |
+| AI Response        | Pass   |
+| Chat History       | Pass   |
+| Language Selection | Pass   |
+| Summary Generation | Pass   |
+| Source References  | Pass   |
+
+7. Bug Reporting
+
+| Bug ID | Description                              | Status |
+| ------ | ---------------------------------------- | ------ |
+| BUG-01 | No major bugs found during final testing | Closed |
+
+8. Conclusion
+
+Testing confirmed that EduBot AI performs as expected across its major features, including document upload, OCR, RAG retrieval, AI-based question answering, chat management, and language selection. 
+The application provides stable performance, an intuitive interface, and reliable responses based on uploaded educational documents.
+Based on the conducted tests, the system is suitable for academic demonstrations and internship submission.

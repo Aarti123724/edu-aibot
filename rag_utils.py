@@ -7,17 +7,58 @@ embedding_model = SentenceTransformer(
     "all-MiniLM-L6-v2"
 )
 
-def split_text(text, chunk_size=1000):
+
+def split_text(text, chunk_size=500, overlap=100):
 
     chunks = []
 
-    for i in range(0, len(text), chunk_size):
+    step = chunk_size - overlap
 
-        chunks.append(
-            text[i:i + chunk_size]
-        )
+    for i in range(0, len(text), step):
+
+        chunk = text[i:i + chunk_size]
+
+        if chunk.strip():
+            chunks.append(chunk)
 
     return chunks
+
+
+def split_documents(
+    documents,
+    chunk_size=500,
+    overlap=100
+):
+
+    chunks = []
+    metadata = []
+
+    step = chunk_size - overlap
+
+    for document in documents:
+
+        text = document["text"]
+        source = document["source"]
+        page = document["page"]
+
+
+        for i in range(0, len(text), step):
+
+            chunk = text[i:i + chunk_size]
+
+            if not chunk.strip():
+                continue
+
+            chunks.append(chunk)
+
+            metadata.append(
+                {
+                    "source": source,
+                    "page": page
+                }
+            )
+
+    return chunks, metadata
 
 
 def create_embeddings(chunks):
@@ -25,7 +66,8 @@ def create_embeddings(chunks):
     print("Total Chunks:", len(chunks))
 
     embeddings = embedding_model.encode(
-        chunks
+        chunks,
+        normalize_embeddings=True
     )
 
     embeddings = np.array(
@@ -54,7 +96,8 @@ def create_faiss_index(embeddings):
 
     dimension = embeddings.shape[1]
 
-    index = faiss.IndexFlatL2(
+    # Cosine Similarity
+    index = faiss.IndexFlatIP(
         dimension
     )
 
@@ -62,10 +105,19 @@ def create_faiss_index(embeddings):
 
     return index
 
-def search_chunks(question, chunks, embeddings, index, top_k=7):
+
+def search_chunks(
+    question,
+    chunks,
+    metadata,
+    embeddings,
+    index,
+    top_k=8
+):
 
     question_embedding = embedding_model.encode(
-        [question]
+        [question],
+        normalize_embeddings=True
     )
 
     distances, indices = index.search(
@@ -73,12 +125,33 @@ def search_chunks(question, chunks, embeddings, index, top_k=7):
         top_k
     )
 
-    relevant_chunks = []
+    results = []
 
-    for idx in indices[0]:
+    for score, idx in zip(distances[0], indices[0]):
 
-        relevant_chunks.append(
-            chunks[idx]
+        if idx == -1:
+            continue
+
+        results.append(
+            {
+                "text": chunks[idx],
+                "source": metadata[idx]["source"],
+                "page": metadata[idx]["page"],
+                "score": float(score)
+            }
         )
 
-    return relevant_chunks
+    print("\n========== Retrieved Chunks ==========")
+
+    if len(results) == 0:
+        print("No relevant chunks found.")
+
+    for r in results:
+        print("--------------------------------------")
+        print("Source :", r["source"])
+        print("Score  :", round(r["score"], 4))
+        print("Preview:", r["text"][:150].replace("\n", " "))
+
+    print("======================================\n")
+
+    return results

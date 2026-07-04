@@ -1,24 +1,31 @@
 from pypdf import PdfReader
 
+
 def extract_pdf_text(pdf_file):
 
     try:
 
         reader = PdfReader(pdf_file)
 
-        text = ""
+        pages = []
 
-        for page in reader.pages:
+        for page_number, page in enumerate(reader.pages):
 
             page_text = page.extract_text()
 
             if page_text:
-                text += page_text + "\n"
 
-        return text
+                pages.append(
+                    {
+                        "page": page_number + 1,
+                        "text": page_text
+                    }
+                )
+
+        return pages
 
     except Exception as e:
 
         print("PDF Extraction Error:", e)
 
-        return ""
+        return []

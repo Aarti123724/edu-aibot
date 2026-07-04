@@ -1,0 +1,181 @@
+EduBot AI – Software Requirements Specification (SRS)
+Table of Contents
+1.Introduction
+2.Project Overview
+3.System Features
+4.Technology Stack
+5.System Architecture
+6.Functional Requirements
+7.Non-Functional Requirements
+8.Future Enhancements
+9.Conclusion
+
+1. Introduction
+
+1.1 Purpose
+
+The purpose of this Software Requirements Specification (SRS) document is to describe the requirements, architecture, features, and design of the EduBot AI system.
+It serves as a reference for developers, testers, project reviewers, and future maintainers.
+EduBot AI is an AI-powered educational assistant that enables users to upload educational PDF documents, ask questions, generate summaries, 
+and receive context-aware answers using Retrieval-Augmented Generation (RAG), Google Gemini AI, and Optical Character Recognition (OCR).
+
+1.2 Scope
+
+EduBot AI is designed to help students interact with educational documents in a conversational way.
+The application retrieves information directly from uploaded documents before generating answers, improving accuracy and reducing incorrect AI responses.
+
+The system supports:
+.Multiple PDF uploads
+.OCR for scanned PDFs
+.AI-powered question answering
+.Document summarization
+.Multi-language responses
+.Chat history management
+.Source references
+
+1.3 Objectives
+
+The main objectives of EduBot AI are:
+.Simplify learning using AI.
+.Improve document search efficiency.
+.Provide accurate answers from uploaded PDFs.
+.Support multiple educational documents.
+.Generate summaries automatically.
+.Improve student productivity.
+
+2. Project Overview
+
+Problem Statement
+
+Students often spend significant time searching through lengthy PDF documents to find relevant information. 
+Traditional PDF readers do not provide intelligent search or question-answering capabilities.
+
+Proposed Solution
+
+EduBot AI provides an AI-powered interface where users can upload educational PDFs and ask questions in natural language.
+The system retrieves relevant information using semantic search and generates accurate answers using Google Gemini.
+
+3. System Features
+
+3.1 Multi PDF Upload
+.Upload multiple educational PDF documents simultaneously.
+.Automatically process uploaded files.
+3.2 OCR Support
+.Extract text from scanned PDF documents.
+.Support image-based educational notes.
+3.3 RAG Search
+.Retrieve the most relevant document chunks.
+.Improve answer accuracy.
+3.4 AI Question Answering
+.Answer only educational questions.
+.Use Google Gemini AI with retrieved document context.
+3.5 Chat History
+.Maintain multiple conversations.
+.Create new chat sessions.
+.Load previous chats.
+.Delete chat history.
+3.6 PDF Summary
+.Generate concise summaries of uploaded documents.
+3.7 Multi-language Support
+.Auto language detection.
+.English responses.
+.Hindi responses.
+3.8 Source References
+.Display document name and page number used for generating answers.
+
+4. Technology Stack
+| Layer           | Technology              |
+| --------------- | ----------------------- |
+| Frontend        | Streamlit               |
+| Backend         | Python                  |
+| AI Model        | Google Gemini 2.5 Flash |
+| Vector Database | FAISS                   |
+| Embeddings      | Sentence Transformers   |
+| OCR             | Gemini OCR              |
+| PDF Processing  | PyPDF                   |
+| Environment     | Python 3.11+            |
+
+5. System Architecture
+
+                  User
+                    │
+                    ▼
+          Streamlit Web Interface
+                    │
+         Upload PDF / Ask Question
+                    │
+                    ▼
+          Document Processing Module
+                    │
+       OCR → Chunking → Embeddings
+                    │
+                    ▼
+               FAISS Index
+                    │
+                    ▼
+             RAG Retrieval Engine
+                    │
+                    ▼
+          Google Gemini AI Model
+                    │
+                    ▼
+         AI Generated Response
+                    │
+                    ▼
+      Chat History + Source Reference
+
+6. Functional Requirements
+
+| ID    | Requirement                          |
+| ----- | ------------------------------------ |
+| FR-01 | Upload one or multiple PDF documents |
+| FR-02 | Extract text from PDFs               |
+| FR-03 | Perform OCR on scanned documents     |
+| FR-04 | Generate semantic embeddings         |
+| FR-05 | Store embeddings in FAISS            |
+| FR-06 | Retrieve relevant document chunks    |
+| FR-07 | Generate AI answers                  |
+| FR-08 | Detect follow-up questions           |
+| FR-09 | Maintain chat history                |
+| FR-10 | Generate PDF summaries               |
+| FR-11 | Support English and Hindi responses  |
+| FR-12 | Display document source references   |
+
+7. Non-Functional Requirements
+
+Performance
+.Fast document retrieval.
+.Quick AI response generation.
+Reliability
+.Stable conversation management.
+.Accurate semantic search.
+Usability
+.Simple and user-friendly interface.
+.Easy document upload.
+Security
+.API key stored securely using environment variables.
+.Uploaded documents remain within the current session.
+Scalability
+.Supports multiple PDF uploads.
+.Future support for cloud deployment.
+
+8. Future Enhancements
+The following features are planned for future versions:
+
+.AI Notes Generator
+.Quiz Generator
+.Flashcards
+.Mind Map Generator
+.Voice Input
+.Text-to-Speech
+.User Authentication
+.Cloud Storage
+.Mobile Application
+.Export Chat to PDF
+.Bookmark Important Answers
+
+9. Conclusion
+
+EduBot AI is an intelligent educational assistant that combines Artificial Intelligence, Retrieval-Augmented Generation (RAG), OCR, and 
+semantic search to provide accurate, document-based answers. The system simplifies learning by enabling users to interact naturally with educational PDF documents, 
+generate summaries, manage conversations, and receive reliable responses supported by source references. Its modular architecture and scalable design make it suitable for academic use and future enhancements.
