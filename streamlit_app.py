@@ -6,7 +6,7 @@ from services.rag_service import RAGService
 from classifier import is_education_question
 from pdf_utils import extract_pdf_text
 from rag_utils import split_documents
-from gemini_ocr import extract_text_with_gemini
+# from gemini_ocr import extract_text_with_gemini
 from services.summary_service import generate_summary
 from services.chat_service import generate_answer
 from services.language_service import LanguageService
