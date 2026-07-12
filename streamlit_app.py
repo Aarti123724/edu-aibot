@@ -29,11 +29,16 @@ st.set_page_config(
 load_css()
 show_header()
 
-# Load environment variables
+# Load local .env (for local development)
 load_dotenv()
 
+# Get API key
+if "GEMINI_API_KEY" in st.secrets:
+    api_key = st.secrets["GEMINI_API_KEY"]
+else:
+    api_key = os.getenv("GEMINI_API_KEY")
+
 # Configure Gemini
-api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=api_key)
 
 model = genai.GenerativeModel("gemini-2.5-flash")
