@@ -27,7 +27,7 @@ An **AI-powered Educational Assistant** built with **Python, Streamlit, Google G
 
 > *(Screenshot Here)*
 
-![Chat](<img width="1280" height="832" alt="Screenshot 2026-07-04 at 10 15 23 PM" src="https://github.com/user-attachments/assets/0047ef80-e00b-47f5-81b4-3ff41a87095b" />
+![Chat](<img width="1280" height="832" alt="Screenshot 2026-07-04 at 10 15 23 PM" src="https://github.com/user-attachments/assets/82262a10-b35f-4336-9429-122a5aa8bc6e" />
 )
 
 ---
