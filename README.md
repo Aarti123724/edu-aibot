@@ -183,7 +183,7 @@ http://localhost:****
 
 # 👨‍💻 Developer
 
-**Aarti**
+**Aarti Chhimpa**
 
 B.Tech Computer Science Engineering
 
