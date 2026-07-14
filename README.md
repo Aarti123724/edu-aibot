@@ -110,7 +110,7 @@ EduBot_AI/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Faizan5079/edubot.git
+git clone https://github.com/Aarti123724/edu-aibot.git
 cd edubot
 ```
 
@@ -183,11 +183,9 @@ http://localhost:****
 
 # 👨‍💻 Developer
 
-**Faizan Ali**
+**Aarti**
 
 B.Tech Computer Science Engineering
-
-🔗 GitHub: https://github.com/Faizan5079
 
 ---
 
