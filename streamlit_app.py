@@ -31,17 +31,27 @@ show_header()
 
 # Load local .env (for local development)
 load_dotenv()
+# Load local .env
+load_dotenv()
 
-# Get API key
-if "GEMINI_API_KEY" in st.secrets:
-    api_key = st.secrets["GEMINI_API_KEY"]
-else:
-    api_key = os.getenv("GEMINI_API_KEY")
+# Get Gemini API key
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        api_key = None
+
+if not api_key:
+    st.error("❌ GEMINI_API_KEY is not configured.")
+    st.stop()
 
 # Configure Gemini
 genai.configure(api_key=api_key)
 
 model = genai.GenerativeModel("gemini-2.5-flash")
+
 rag = RAGService()
 language = LanguageService()
 memory = MemoryService()

@@ -3,43 +3,37 @@ print("🔥 NEW CLASSIFIER FILE LOADED")
 def is_education_question(question, model):
 
     prompt = f"""
-    You are a classifier.
+    Determine whether this question is educational.
 
-    Determine whether the following question is educational.
-
-    Educational topics include:
-    - School Subjects
-    - College Subjects
-    - Mathematics
-    - Physics
-    - Chemistry
-    - Biology
-    - Computer Science
-    - Programming
-    - DBMS
-    - Operating Systems
-    - Computer Networks
-    - Software Engineering
-    - Engineering
-    - Career Guidance
-    - Interview Preparation
-
-    Return ONLY one word:
-
+    Reply with ONLY:
     EDUCATION
-
     or
-
     NON_EDUCATION
 
     Question:
     {question}
     """
 
-    response = model.generate_content(prompt)
+    try:
+        print("🔥 Calling Gemini classifier...")
+        
+        response = model.generate_content(prompt)
 
-    result = response.text.strip().upper()
+        print("🔥 Gemini response received")
 
-    print("Classifier:", result)
+        result = response.text.strip().upper()
 
-    return "EDUCATION" in result and "NON_EDUCATION" not in result
+        print("Classifier:", result)
+
+        return (
+            "EDUCATION" in result
+            and "NON_EDUCATION" not in result
+        )
+
+    except Exception as e:
+
+        print("❌ CLASSIFIER GEMINI ERROR:")
+        print(type(e).__name__)
+        print(str(e))
+
+        raise
