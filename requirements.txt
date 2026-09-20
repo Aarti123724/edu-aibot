@@ -1,7 +1,7 @@
 streamlit
 streamlit-javascript
 
-google-generativeai
+google-generativeai==0.8.6
 python-dotenv
 
 numpy
